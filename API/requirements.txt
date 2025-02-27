@@ -1,3 +1,9 @@
-flask
-pandas==1.5.3
-numpy
+Flask
+gunicorn
+pandas
+matplotlib
+seaborn
+werkzeug
+openpyxl
+reportlab
+
