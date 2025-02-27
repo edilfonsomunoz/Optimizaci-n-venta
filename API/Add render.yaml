@@ -1,0 +1,14 @@
+# Configuración de Render para Flask
+services:
+- type: web
+  name: Optimizacion-venta
+  runtime: python
+  repo: https://github.com/edilfonsomunoz/Optimizaci-n-venta
+  branch: main
+  buildCommand: pip install -r requirements.txt
+  startCommand: python API/app.py
+  envVars:
+    - key: PORT
+      value: 10000
+  rootDir: API/
+version: "1"
