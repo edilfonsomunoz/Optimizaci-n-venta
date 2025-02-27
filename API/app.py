@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, send_file, redirect, url_for
+from flask import Flask, request, render_template, send_file
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -8,8 +8,9 @@ from time_series_analysis import generate_time_series_analysis
 from report_generator import create_pdf_report
 
 # Configuración de Flask
-app = Flask(__name__)  # ✅ Corregido aquí
+app = Flask(__name__)
 
+# Definir carpetas
 UPLOAD_FOLDER = 'uploads'
 REPORT_FOLDER = 'reports'
 STATIC_FOLDER = 'static'
@@ -69,5 +70,6 @@ def descargar_pdf(pdf_filename):
     """ Permite descargar el informe en PDF """
     return send_file(os.path.join(app.config['REPORT_FOLDER'], pdf_filename), as_attachment=True)
 
-if __name__ == '__main__':  # ✅ Corregido aquí también
-    app.run(debug=True)
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 10000))  # Render asigna un puerto dinámico
+    app.run(host='0.0.0.0', port=port, debug=True)
